@@ -1,0 +1,15 @@
+# Sensitive files
+.devcontainer/dotfiles/.config/opencode/config.json
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

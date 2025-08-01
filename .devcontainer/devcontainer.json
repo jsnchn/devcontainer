@@ -1,0 +1,39 @@
+{
+  "name": "Ubuntu Development Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": false,
+      "upgradePackages": true,
+      "username": "jsnchn",
+      "userUid": "1000",
+      "userGid": "1000"
+    }
+  },
+  
+  "postCreateCommand": "/bin/bash -c 'apt-get update && apt-get install -y git curl wget build-essential ripgrep fd-find direnv && /usr/local/share/setup-devcontainer.sh'",
+  
+  "postStartCommand": "tmux new-session -d -s main 2>/dev/null || true",
+  
+  "remoteUser": "jsnchn",
+  
+  "mounts": [],
+  
+  "forwardPorts": [],
+  
+  "runArgs": ["--init"],
+  
+  "containerEnv": {
+    "SHELL": "/bin/zsh",
+    "GITHUB_COPILOT_TOKEN": "${localEnv:GITHUB_COPILOT_TOKEN}"
+  },
+  
+  "remoteEnv": {
+    "PATH": "/home/jsnchn/.local/share/mise/shims:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+  }
+}
